@@ -61,9 +61,9 @@ Param (
     [switch]$SkipNetworkProfileCheck,
     $CreateSelfSignedCert = $true,
     [switch]$ForceNewSSLCert,
-    [switch]$GlobalHttpFirewallAccess,
-    [switch]$DisableBasicAuth = $false,
-    [switch]$EnableCredSSP
+    [switch]$GlobalHttpFirewallAccess = $false,
+    [switch]$DisableBasicAuth,
+    [switch]$EnableCredSSP = $false
 )
 
 Function Write-Log
