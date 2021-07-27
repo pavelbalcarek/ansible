@@ -61,7 +61,7 @@ Param (
     [switch]$SkipNetworkProfileCheck,
     $CreateSelfSignedCert = $true,
     [switch]$ForceNewSSLCert,
-    [switch]$GlobalHttpFirewallAccess = $false,
+    $GlobalHttpFirewallAccess = $false,
     $DisableBasicAuth = $true,
     [switch]$EnableCredSSP = $false,
     $RemoveHttpListener = $true
