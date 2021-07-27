@@ -387,6 +387,7 @@ Else
 if ($RemoveHttpListener)
 {
     $selectorset = @{
+        Address = "*"
         Transport = "HTTP"
     }
 
