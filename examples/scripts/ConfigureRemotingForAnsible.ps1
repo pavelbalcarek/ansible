@@ -63,7 +63,8 @@ Param (
     [switch]$ForceNewSSLCert,
     [switch]$GlobalHttpFirewallAccess = $false,
     [switch]$DisableBasicAuth,
-    [switch]$EnableCredSSP = $false
+    [switch]$EnableCredSSP = $false,
+    [switch]$RemoveHttpListener
 )
 
 Function Write-Log
@@ -381,6 +382,17 @@ Else
         # Add new Listener with new SSL cert
         New-WSManInstance -ResourceURI 'winrm/config/Listener' -SelectorSet $selectorset -ValueSet $valueset
     }
+}
+
+if ($RemoveHttpListener)
+{
+    $selectorset = @{
+        Transport = "HTTP"
+    }
+
+    Write-Verbose "Removing HTTP listener."
+    Remove-WSManInstance -ResourceURI 'winrm/config/Listener' -SelectorSet $selectorset
+    Write-Verbose "Removed HTTP listener."
 }
 
 # Check for basic authentication.
